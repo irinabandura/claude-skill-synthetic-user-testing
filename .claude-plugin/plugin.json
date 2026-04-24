@@ -1,0 +1,11 @@
+{
+  "name": "synthetic-user-testing",
+  "version": "1.0.0",
+  "description": "Run synthetic user testing sessions for any product. Create your own personas, save them for reuse, and get focused DOCX reports with priority fixes. Product-agnostic — works with any app, portal, or service.",
+  "author": {
+    "name": "Irina Bandura",
+    "email": "irina.bandura@epicgames.com"
+  },
+  "license": "UNLICENSED",
+  "keywords": ["ux", "usability", "testing", "personas", "heuristics", "cognitive-walkthrough", "synthetic-users"]
+}
