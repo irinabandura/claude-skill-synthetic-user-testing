@@ -304,18 +304,19 @@ After running the test, generate a DOCX file using the Python script at `knowled
 
 #### Generating the DOCX file
 
-Write the report as markdown first, then convert:
+**MANDATORY: ALWAYS use the Python report generator script.** Never use pandoc or md-to-docx — they produce broken tables and lose all formatting (landscape orientation, color-coded priority headers, styled table cells, proper column widths). The Python script at `knowledge/generate-report.py` is the ONLY supported method.
+
+Steps:
+1. Structure the report data as a JSON object matching the script's input format (see script docstring for schema: date, test_mode, personas, summary, fixes[], real_user_testing[])
+2. Write the JSON to a temporary file
+3. Pipe the JSON into the Python script:
 
 ```bash
-pandoc [filename].md -o [filename].docx --reference-doc=knowledge/reference.docx 2>/dev/null || pandoc [filename].md -o [filename].docx 2>/dev/null
+pip3 install python-docx 2>/dev/null
+cat [report-data].json | python3 knowledge/generate-report.py [output].docx
 ```
 
-If pandoc is not available, try:
-```bash
-npx md-to-docx [filename].md 2>/dev/null
-```
-
-If neither works, fall back to writing the markdown file and inform the user.
+If `python-docx` cannot be installed, fall back to writing the markdown file and inform the user — but **never use pandoc** as it produces unformatted, broken output.
 
 #### After delivering the file
 
